@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                {% if student.profile_image %}
+                    <img src="{{ student.profile_image.url }}" class="img-thumbnail mb-3" width="200" alt="Profile Image">
+                {% else %}
+                    <img src="https://via.placeholder.com/200x200?text=No+Image" class="img-thumbnail mb-3" alt="No image">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <h3 class="mb-3">{{ student.name }}</h3>
+                <p><strong>Class:</strong> {{ student.student_class }}</p>
+                <p><strong>Marks:</strong> {{ student.marks }}</p>
+                <p><strong>Email:</strong> {{ student.email }}</p>
+                <p><strong>Phone:</strong> {{ student.phone }}</p>
+                <p><strong>Address:</strong> {{ student.address }}</p>
+                <p><strong>Registered on:</strong> {{ student.created_at|date:"d M Y, h:i A" }}</p>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">⬅️ Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
